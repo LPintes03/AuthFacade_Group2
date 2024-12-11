@@ -15,7 +15,7 @@ Route::post('logout',[AuthController::class,'logout']);
 
 Route::middleware('authenticated')->group(function (){
 
-    Route::get('/', function () {
+    Route::get('/', function (){
         return view('dashboard');
     });
 
