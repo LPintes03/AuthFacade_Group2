@@ -36,7 +36,7 @@ class ProfileController extends Controller
         Auth::user()->profile()->create($profile);
 
 
-        return redirect("/");
+        return redirect("/profile");
         
 
     }
