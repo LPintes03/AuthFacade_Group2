@@ -28,7 +28,6 @@ class ProfileController extends Controller
 
             'bio' => ['required', 'string'],
             'contact' => ['required', 'string', 'max:11'],
-
             'profile_pic' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif', 'max:51200'],
         ]);
 
@@ -43,25 +42,5 @@ class ProfileController extends Controller
 
         return redirect("/profile");
     }
-    public function update(Request $request)
-    {
-        // Validate the request
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
-        ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Update the user's profile
-        $user = Auth::user();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->save();
-
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Profile updated successfully!');
-    }
 }
