@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/login',[AuthController::class,'showLogIn']);
 Route::post('/login',[AuthController::class,'login']);
@@ -16,7 +18,9 @@ Route::post('logout',[AuthController::class,'logout']);
 Route::middleware('authenticated')->group(function (){
 
     Route::get('/', function () {
-        return view('dashboard');
+        $user = Auth::user();
+        
+        return view('dashboard',['user'=>$user]);
     });
 
     Route::get('/create-profile',[ProfileController::class,'showCreateProfile']);

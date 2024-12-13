@@ -20,7 +20,7 @@ class ProfileController extends Controller
 
     public function createProfile(Request $request){
         $profile = $request->validate([
-            'title'=>['required','string','max:50'],
+            
             'bio'=>['required','string'],
             'contact'=>['required','string','max:11'],
             
@@ -33,9 +33,7 @@ class ProfileController extends Controller
             $profile['profile_pic'] = $filePath; 
         }
        
-        $profile['user_id'] = Auth::id();
-
-        Profile::create($profile);
+        Auth::user()->profile()->create($profile);
 
 
         return redirect("/");
