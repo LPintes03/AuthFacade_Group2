@@ -19,9 +19,10 @@ Route::middleware('authenticated')->group(function (){
 
     Route::get('/', function () {
         $user = Auth::user();
-        
-        return view('dashboard',['user'=>$user]);
+
+        return view('welcome',['user'=>$user]);
     });
+    Route::get('/dashboard',[AuthController::class,'dashboard']);
 
     Route::get('/create-profile',[ProfileController::class,'showCreateProfile']);
     Route::post('/create-profile',[ProfileController::class,'createProfile']);

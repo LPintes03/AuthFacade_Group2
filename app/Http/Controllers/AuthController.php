@@ -17,6 +17,11 @@ class AuthController extends Controller
         return view('login');
     }
 
+    public function dashboard(){
+        return view('dashboard');
+    }
+
+
     public function register(Request $request){
         $registration = $request->validate([
             'name'=>['required','max:10'],
@@ -35,13 +40,13 @@ class AuthController extends Controller
     public function logout(){
        Auth::logout();
         return redirect('/');
-        
+
     }
 
     public function login(Request $request){
         $login = $request->validate([
-            'login_name'=>'required',
-            'login_password'=>'required'
+            'login_name' => 'required|string',
+            'login_password' => 'required|string',
         ]);
 
         if (auth()->guard('web')->attempt(['name' => $login['login_name'],'password'=>$login['login_password']])){

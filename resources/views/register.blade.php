@@ -12,9 +12,9 @@
 <body>
 
     <!-- Register Form -->
-    <div class="bg-gradient-to-br from-purple-700 to-pink-500 min-h-screen flex flex-col justify-center items-center">
+    <div class="bg-gradient-to-br from-red-700 to-gray-600 min-h-screen flex flex-col justify-center items-center">
         <div class="bg-white rounded-lg shadow-lg p-8 max-w-md">
-            <h1 class="text-4xl font-bold text-center text-purple-700 mb-8">Register</h1>
+            <h1 class="text-4xl font-bold text-center text-red-700 mb-8">Register</h1>
             <form action="/register" method="POST">
                 @csrf
                 <input
@@ -42,7 +42,7 @@
                     class="w-full p-3 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button
                     type="submit"
-                    class="w-full bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded-lg">
+                    class="w-full bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-lg">
                     Register
                 </button>
             </form>
